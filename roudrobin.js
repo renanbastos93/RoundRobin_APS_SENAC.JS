@@ -11,10 +11,21 @@
 			ps.push(i);
 		}
 	} else {
-		ps = ps.slice();
+		// ps = ps.slice();
 	}
+	if (n % 2 === 1) {
+		ps.push(DUMMY); 
+		n += 1;
+	}
+	 for (var j = 0; j < n - 1; j += 1) {
+    rs[j] = []; 
+    for (var i = 0; i < n / 2; i += 1) {
+      if (ps[i] !== DUMMY && ps[n - 1 - i] !== DUMMY) {
+        rs[j].push([ps[i], ps[n - 1 - i]]); 
+      }
+    }
+    ps.splice(1, 0, ps.pop());
+  }
 	return rs;
-});
+})();
 
-var arr = [1,2,3,4,5,6,7,8,9];
-console.log(arr.RobinHood());
